@@ -1,0 +1,60 @@
+﻿Argus 0.2.0 CPU measurement backend - third-party notices
+
+These libraries and the official PawnIO installer are unmodified.
+Argus helper source: tools/cpu-temperature/Helper.cs (MIT, same repository as Argus).
+No .NET SDK is needed at runtime; Windows includes .NET Framework 4.7.2 or later.
+
+Package source origins (exact repository revisions are preserved in the packaged .nuspec files):
+LibreHardwareMonitorLib 0.9.6 - MPL-2.0; authors: LibreHardwareMonitorLib; copyright: LibreHardwareMonitor
+Source: https://github.com/LibreHardwareMonitor/LibreHardwareMonitor ; revision: 3d331e3370efb858411f19511373eff65a218701
+Package: https://www.nuget.org/packages/LibreHardwareMonitorLib/0.9.6 ; SHA256: 60db5e0d9135f4658b385cae139d3b9eaeac0a8e867d322d20b5dbe4c4039197
+DiskInfoToolkit 1.1.2 - MPL-2.0; authors: DiskInfoToolkit; copyright: Florian K.
+Source: https://github.com/Blacktempel/DiskInfoToolkit ; revision: 25319eae5781e75bcf141e844ceab2afe94d40ea
+Package: https://www.nuget.org/packages/DiskInfoToolkit/1.1.2 ; SHA256: a997f0b3701e20b2ab9296e07ee4f74f877e75015277fb6bd314ade1e2c4db13
+RAMSPDToolkit-NDD 1.4.2 - MPL-2.0; authors: RAMSPDToolkit-NDD; copyright: Florian K.
+Source: https://github.com/Blacktempel/RAMSPDToolkit ; revision: 3b47b960e0830fef344624ad5e389675d5f0a1ce
+Package: https://www.nuget.org/packages/RAMSPDToolkit-NDD/1.4.2 ; SHA256: 57c893824a68c71538055f242586616d4205a671c300897c21b2a6f88270ce64
+BlackSharp.Core 1.0.7 - MPL-2.0; authors: BlackSharp.Core; copyright: Florian K.
+Source: https://github.com/Blacktempel/BlackSharp ; revision: c70b735c6cec123ee8a046ac4a0bc6c606f52cf0
+Package: https://www.nuget.org/packages/BlackSharp.Core/1.0.7 ; SHA256: 4f713fe18ee7c85a7c49f28309adaa815714333326aa81fd4d4a81619ecaa0ab
+HidSharp 2.6.4 - Apache-2.0; authors: James F. Bellinger; copyright: Copyright 2010-2025 James Bellinger
+Source: https://software.seekye.com/hidsharp ; revision: 
+Package: https://www.nuget.org/packages/HidSharp/2.6.4 ; SHA256: cf55d4b4d7b42dc1d8496b7b592ba00d1ecd48a70bc07bd8dabd3e9976d108e7
+System.Memory 4.6.3 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: https://github.com/dotnet/maintenance-packages ; revision: f62ca0009b038cab4725a720f386623a969d73ad
+Package: https://www.nuget.org/packages/System.Memory/4.6.3 ; SHA256: 26078aeb758c9ae985e8bf851f973026061da6a5eb4837204d0c2d2204c72955
+System.Buffers 4.6.1 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: https://github.com/dotnet/maintenance-packages ; revision: 6b84308c9ad012f53240d72c1d716d7e42546483
+Package: https://www.nuget.org/packages/System.Buffers/4.6.1 ; SHA256: b00451e91d016fbec091ad1e361f3a7015e1d91d4047f7e48a74455b2a673d79
+System.Numerics.Vectors 4.6.1 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: https://github.com/dotnet/maintenance-packages ; revision: 6b84308c9ad012f53240d72c1d716d7e42546483
+Package: https://www.nuget.org/packages/System.Numerics.Vectors/4.6.1 ; SHA256: 2bc500a86dcb02f2032d6d877f9e2d6e9e4a79080e57239b4198679d4031f2c7
+System.Runtime.CompilerServices.Unsafe 6.1.2 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: https://github.com/dotnet/maintenance-packages ; revision: f62ca0009b038cab4725a720f386623a969d73ad
+Package: https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/6.1.2 ; SHA256: 5f6a7f53af3465f92beb6da873ebe0e496206c313313b98badee4355a6b25937
+System.Threading.AccessControl 10.0.3 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: https://github.com/dotnet/dotnet ; revision: c2435c3e0f46de784341ac3ed62863ce77e117b4
+Package: https://www.nuget.org/packages/System.Threading.AccessControl/10.0.3 ; SHA256: 9f4f28238e13c6cc47b789a4a1d5647997747594dfcfd45c1526f9b671cde073
+System.Security.AccessControl 6.0.0 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: https://github.com/dotnet/runtime ; revision: 4822e3c3aa77eb82b2fb33c9321f923cf11ddde6
+Package: https://www.nuget.org/packages/System.Security.AccessControl/6.0.0 ; SHA256: a8ec961016cdaf7123c92f9eb451bcff331bb8f8c0f8ef9d8bbd7b24ff42c728
+System.Security.Principal.Windows 5.0.0 - MIT; authors: Microsoft; copyright: © Microsoft Corporation. All rights reserved.
+Source: git://github.com/dotnet/runtime ; revision: cf258a14b70ad9069470a108f13765e0e5988f51
+Package: https://www.nuget.org/packages/System.Security.Principal.Windows/5.0.0 ; SHA256: 081390c25f6f78592b28ada853c24514488a221fe9f9a24efaaf5373643ff3d6
+
+PawnIO official signed installer 2.2.0: proprietary binary, redistributed unmodified.
+Copyright namazso. Provided as is, without warranty.
+Official download: https://github.com/namazso/PawnIO.Setup/releases/tag/2.2.0
+Redistribution permission is embedded in the unchanged signed installer; see licenses/PawnIO-official-installer-terms.txt.
+SHA256: 1f519a22e47187f70a1379a48ca604981c4fcf694f4e65b734aaa74a9fba3032
+Website: https://pawnio.eu/
+Driver source (GPL-2.0-or-later with device-I/O exception): https://github.com/namazso/PawnIO
+The official signed binary distribution differs from the source distribution; see the installer terms.
+
+PawnIO.Modules embedded unmodified in LibreHardwareMonitorLib: LGPL-2.1-or-later.
+Source: https://github.com/namazso/PawnIO.Modules ; license included in LibreHardwareMonitor-THIRD-PARTY-NOTICES.txt.
+LibreHardwareMonitor 0.9.6 source: https://github.com/LibreHardwareMonitor/LibreHardwareMonitor/tree/3d331e3370efb858411f19511373eff65a218701
+Embedded AMD module provenance/version is not established; library README attribution differs from the release binary.
+The shared PawnIO driver is always kept when Argus is removed. Remove it using Windows Apps only when other programs no longer need it.
+
+Full license texts, copyright notices and original package metadata are in the licenses directory. Microsoft-MIT.txt applies to the listed Microsoft System.* libraries. MPL-2.0.txt applies to the listed MPL libraries. No warranty is provided.

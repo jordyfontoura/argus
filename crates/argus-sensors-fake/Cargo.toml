@@ -1,0 +1,12 @@
+[package]
+name = "argus-sensors-fake"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+argus-core = { path = "../argus-core" }

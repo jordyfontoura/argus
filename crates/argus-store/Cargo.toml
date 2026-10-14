@@ -1,0 +1,19 @@
+[package]
+name = "argus-store"
+description = "Persistence: versioned config (atomic writes) and the alert history in SQLite."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+argus-alerts = { path = "../argus-alerts" }
+rusqlite = { version = "0.40", features = ["bundled"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+tempfile = "3"

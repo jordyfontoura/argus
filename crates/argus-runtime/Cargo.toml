@@ -1,0 +1,18 @@
+[package]
+name = "argus-runtime"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+argus-alerts = { path = "../argus-alerts" }
+argus-core = { path = "../argus-core" }
+argus-store = { path = "../argus-store" }
+
+[dev-dependencies]
+argus-sensors-fake = { path = "../argus-sensors-fake" }
+tempfile = "3"

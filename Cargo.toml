@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/argus-core",
+    "crates/argus-api",
+    "crates/argus-alerts",
+    "crates/argus-store",
+    "crates/argus-runtime",
+    "crates/argus-sensors-win",
+    "crates/argus-sensors-fake",
+    "crates/argus-probe",
+    "src-tauri",
+]
+
+[workspace.package]
+version = "0.2.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"

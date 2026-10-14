@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Argus</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside>
+  <div class="brand"><i></i><span class="bt">ARGUS</span></div>
+  <nav id="nav" aria-label="Telas"></nav>
+  <div class="side-foot mono" id="foot"></div>
+</aside>
+<main>
+  <header id="hdr">
+    <h1 id="title">Visão geral</h1>
+    <span class="sub mono" id="host"></span>
+    <span class="sp"></span>
+    <button class="pill" id="pause" aria-pressed="false" aria-keyshortcuts="Space" title="Pausar a tela (Espaço). A coleta continua."><span class="dot"></span><span id="pt">Ao vivo</span></button>
+    <button class="pill" id="rate" title="Janela do gráfico">Janela: 60 s</button>
+    <button class="pill" id="theme" aria-pressed="false" title="Alternar tema claro/escuro">Tema</button>
+  </header>
+  <div class="banner" id="demo" hidden>Modo de demonstração: fora do aplicativo, estes valores são sintéticos.</div>
+
+  <section class="view on" id="v-overview">
+    <div class="grid g4" id="tiles"></div>
+    <div class="grid g3" style="margin-top:14px">
+      <div class="card">
+        <h3>Histórico
+          <span class="tabs" id="maintabs" style="margin:0 0 0 auto">
+            <button data-t="load" class="on" aria-pressed="true">Carga %</button>
+            <button data-t="temp" aria-pressed="false">Temperatura</button>
+          </span>
+        </h3>
+        <svg class="chart" id="mainchart" role="img" aria-label="Histórico de carga e temperatura"></svg>
+        <div class="chart-note" id="mainnote"></div>
+      </div>
+      <div class="card"><h3>Sensores em destaque</h3><table id="topsens"></table></div>
+    </div>
+    <div class="card" style="margin-top:14px"><h3>Meu painel <span class="meta" style="margin-left:auto;text-transform:none;letter-spacing:0">Fixe sensores com ★ na tela Sensores</span></h3><div class="pins" id="pins"></div></div>
+  </section>
+
+  <section class="view" id="v-cpu">
+    <div class="grid g3">
+      <div>
+        <div class="card"><h3><span class="sw" style="background:var(--cpu)"></span>Uso total</h3><svg class="chart" id="cpuchart" role="img" aria-label="Uso total da CPU"></svg></div>
+        <div class="card" style="margin-top:14px"><h3>Threads</h3><div class="cores" id="cores"></div></div>
+      </div>
+      <div class="card"><h3>Processador</h3><dl class="kv" id="cpukv"></dl></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><h3>Cache</h3><table id="cpucache"></table></div>
+      <div class="card"><h3>Limitadores <span class="meta" style="margin-left:auto;text-transform:none;letter-spacing:0">o que está reduzindo o clock agora</span></h3>
+        <div class="lims" id="cpulim"></div><p class="meta" id="cpulimtxt"></p></div>
+    </div>
+    <div class="card" style="margin-top:14px"><h3>Conjuntos de instruções</h3><div class="isa" id="cpuisa"></div></div>
+  </section>
+
+  <section class="view" id="v-gpu">
+    <div id="gpus"></div>
+  </section>
+
+  <section class="view" id="v-mem">
+    <div class="grid g3">
+      <div class="card"><h3><span class="sw" style="background:var(--mem)"></span>Memória em uso</h3><svg class="chart" id="memchart" role="img" aria-label="Memória em uso"></svg></div>
+      <div class="card"><h3>Configuração atual</h3><dl class="kv" id="memkv"></dl></div>
+    </div>
+    <div class="card" style="margin-top:14px"><h3>Módulos <span class="tabs" id="spdtabs" style="margin:0 0 0 auto"></span></h3><div id="spd"></div></div>
+  </section>
+
+  <section class="view" id="v-alerts">
+    <div class="atop">
+      <button class="btn pri" id="newrule">+ Nova regra</button>
+      <button class="btn" id="openwiz">🛡 Assistente de proteção</button>
+      <span class="tag" id="presetinfo"></span>
+      <div class="asum mono" id="asum"></div>
+      <span class="sp"></span>
+      <label class="meta"><input type="checkbox" id="crit-bypass" checked> Críticos ignoram o silêncio</label>
+      <label class="meta">Silenciar notificações
+        <select id="mute"><option value="0">Não</option><option value="300">5 min</option><option value="3600">1 h</option></select></label>
+    </div>
+    <div id="rlist"></div>
+  </section>
+
+  <section class="view" id="v-hist">
+    <div class="atop">
+      <select id="hf-sev" aria-label="Gravidade"><option value="all">Todas as gravidades</option><option value="crit">Críticos</option><option value="warn">Avisos</option><option value="info">Informação</option></select>
+      <select id="hf-rule" aria-label="Regra"><option value="all">Todas as regras</option></select>
+      <select id="hf-kind" aria-label="Tipo de evento"><option value="all">Todos os eventos</option><option value="fired">Só disparos</option><option value="resolved">Só resoluções</option><option value="other">Encerramentos e notas</option></select>
+      <label class="meta"><input type="checkbox" id="hf-test"> Mostrar testes</label>
+      <span class="sp"></span><span class="asum" id="hsum"></span>
+      <label class="meta">Manter por <select id="hret" aria-label="Retenção do histórico"></select></label>
+      <button class="btn" id="hexport">Exportar CSV</button><button class="btn dng" id="clrlog">Limpar</button><button class="btn" id="clrcancel" hidden>Cancelar</button>
+    </div>
+    <div class="card"><table>
+      <thead><tr><th>Quando</th><th>Gravidade</th><th>Regra</th><th>Evento</th><th>Detalhe</th></tr></thead>
+      <tbody id="hbody"></tbody></table></div>
+  </section>
+
+  <section class="view" id="v-cfg">
+    <div class="grid g2">
+      <div class="card"><h3>Coleta e exibição</h3><div id="dispsettings"></div></div>
+      <div class="card"><h3>Segundo plano e alertas</h3><div id="bgsettings"></div></div>
+      <div class="card"><h3>Medidores da CPU</h3><div id="cpusettings"></div></div>
+    </div>
+  </section>
+
+  <section class="view" id="v-proc">
+    <div class="card">
+      <h3>Processos <span class="meta" id="pcount" style="text-transform:none;letter-spacing:0"></span><input id="pf" type="text" placeholder="Filtrar…" aria-label="Filtrar processos" style="margin-left:auto"></h3>
+      <table><thead id="phead"></thead><tbody id="pbody"></tbody></table>
+    </div>
+  </section>
+
+  <section class="view" id="v-sens">
+    <div class="card"><h3 class="sbar">Sensores
+      <input id="sq" type="text" placeholder="Buscar sensor…" aria-label="Buscar sensor" style="margin-left:auto">
+      <label style="text-transform:none;letter-spacing:0"><input type="checkbox" id="sfav"> Só fixados ★</label>
+      <button class="btn sm" id="scollapse">Recolher tudo</button><button class="btn sm" id="sessreset">Zerar mín/máx</button></h3>
+      <table id="senstable"></table></div>
+  </section>
+
+  <section class="view" id="v-disk">
+    <div class="grid g2" id="volumes"></div>
+    <div class="card" style="margin-top:14px"><h3><span class="sw" style="background:var(--disk)"></span>Throughput total (MB/s)</h3><svg class="chart" id="diskchart" role="img" aria-label="Leitura e escrita de disco"></svg></div>
+    <div class="card" style="margin-top:14px"><h3>Discos e saúde <span class="tabs" id="disktabs" style="margin:0 0 0 auto"></span></h3><div id="diskdetail"></div></div>
+  </section>
+
+  <section class="view" id="v-sys">
+    <div class="atop">
+      <span class="meta">Informações do hardware e do sistema, como no CPU-Z. O que o Windows não informa aparece como indisponível, com o motivo.</span><span class="sp"></span>
+      <button class="btn" id="copyrep">Copiar relatório</button><button class="btn" id="exportcsv" title="Histórico dos sensores desta sessão (cerca de 20 minutos)">Exportar CSV</button>
+    </div>
+    <div class="grid g2" id="sysgrid"></div>
+  </section>
+
+  <section class="view" id="v-net">
+    <div class="card"><h3><span class="sw" style="background:var(--net)"></span>Download / Upload (Mbps)</h3><svg class="chart" id="netchart" role="img" aria-label="Download e upload"></svg></div>
+    <div class="card" style="margin-top:14px"><h3>Adaptadores</h3><table id="adapters"></table></div>
+  </section>
+</main>
+<div class="ovl" id="ovl"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <h2 id="mt">Nova regra</h2>
+  <div class="frm">
+    <label class="full">Nome<input id="f-name" maxlength="80" placeholder="Ex.: CPU superaquecendo"></label>
+    <label>Métrica<select id="f-metric"></select></label>
+    <label>Tipo de condição<select id="f-mode"></select></label>
+    <label>Operador
+      <select id="f-op"><option value="above">maior que</option><option value="below">menor que</option></select></label>
+    <label><span>Limite <span class="meta" id="f-unit"></span></span><input type="number" id="f-val" step="any"></label>
+    <label id="l-count">Quantidade de ocorrências<input type="number" id="f-count" min="2"></label>
+    <label><span id="l-dur">Por quanto tempo</span>
+      <span class="inl"><input type="number" id="f-dur" min="0"><select id="f-durU"><option value="1">segundos</option><option value="60">minutos</option></select></span></label>
+    <label>Esperar (s) com valor normal antes de resolver<input type="number" id="f-rec" min="0"></label>
+    <label id="l-hystw"><span>Resolver só quando ficar <span id="l-hyst">abaixo</span> de (opcional)</span><input type="number" id="f-hyst" step="any" placeholder="igual ao limite"></label>
+    <label>Repetir aviso enquanto ativo
+      <select id="f-rep"><option value="0">Nunca (avisa uma vez)</option><option value="30">A cada 30 s</option><option value="60">A cada 1 min</option><option value="300">A cada 5 min</option><option value="900">A cada 15 min</option></select></label>
+    <label>Severidade
+      <select id="f-sev"><option value="info">Informação</option><option value="warn">Aviso</option><option value="crit">Crítico</option></select></label>
+    <div class="acts full"><span class="meta">Ações ao disparar</span>
+      <label><input type="checkbox" id="a-toast"> Aviso na tela</label>
+      <label><input type="checkbox" id="a-sound"> Som</label>
+      <label><input type="checkbox" id="a-notify"> Notificação do sistema</label></div>
+  </div>
+  <div class="prev"><div id="f-sent" class="sent"></div><svg id="mchart" class="chart" style="height:130px" role="img" aria-label="Limite sobre o histórico recente"></svg><div class="chart-note" id="f-prevnote"></div></div>
+  <div id="f-err" class="chart-note" role="alert" style="color:var(--bad)"></div>
+  <div class="mfoot"><button class="btn" id="msim" type="button">Simular</button><span class="sp" style="flex:1"></span><button class="btn" id="mcancel" type="button">Cancelar</button><button class="btn pri" id="msave" type="button">Salvar regra</button></div>
+</div></div>
+<div class="ovl" id="wiz"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="wt"><div id="wiz-box"></div></div></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

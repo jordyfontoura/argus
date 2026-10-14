@@ -1,0 +1,15 @@
+PawnIO official signed installer 2.2.0
+Unmodified binary from https://github.com/namazso/PawnIO.Setup/releases/download/2.2.0/PawnIO_setup.exe
+SHA256: 1f519a22e47187f70a1379a48ca604981c4fcf694f4e65b734aaa74a9fba3032
+
+The following notice is embedded in the installer itself:
+
+PawnIO is provided "as is" without warranty of any kind, either express or implied. Use at your own risk. The authors are not liable for any damages arising from the use of this software.
+
+All rights reserved.
+This installer can be redistributed unmodified.
+Copyright © 2026 namazso <admin@namazso.eu>
+
+Official distribution information: https://pawnio.eu/
+Driver source and source license/exception: https://github.com/namazso/PawnIO
+The source license does not replace the official installer's binary redistribution terms.

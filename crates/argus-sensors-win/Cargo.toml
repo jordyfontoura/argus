@@ -1,0 +1,18 @@
+[package]
+name = "argus-sensors-win"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+argus-core = { path = "../argus-core" }
+libloading = "0.9.0"
+raw-cpuid = "11.6.0"
+serde = { version = "1.0.229", features = ["derive"] }
+sysinfo = "0.39.6"
+windows = { version = "0.62.2", features = ["Win32_Foundation", "Win32_System_Performance", "Win32_System_SystemInformation", "Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_Ioctl", "Win32_Security", "Win32_System_Services", "Win32_System_Pipes", "Win32_UI_Shell", "Win32_UI_WindowsAndMessaging", "Win32_System_Threading"] }
+wmi = "0.18.4"
